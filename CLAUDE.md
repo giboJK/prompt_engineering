@@ -16,6 +16,12 @@
 - API 키, `.env` 내용, 실제 개인정보는 질문 원문에 있더라도 `[삭제]`로 가리고 기록한다.
 - 기록을 위한 AI_USAGE.md 수정 자체는 다른 행에 따로 적지 않는다.
 
+## 코드 스타일과 lint
+
+- Python 코드와 문서에 넣는 Python 예시는 [Google Python Style Guide](https://google.github.io/styleguide/pyguide.html)를 따른다.
+- lint는 저장소 루트의 `pylintrc`(Google 배포 파일)로 실행한다: `uvx pylint --rcfile=pylintrc <대상>`. 대상이 import하는 패키지는 `--with <패키지>`로 넣거나 해당 프로젝트 환경에서 `uv run pylint`로 실행한다. 경고가 없으면 아무것도 출력하지 않고 종료 코드 0으로 끝난다.
+- 과제 제공 파일(`support.py`, `checks.py`)과 `main.py`의 제공 골격은 과제 형식을 유지해야 하므로 lint 결과에 맞춰 고치지 않는다.
+
 ## 과제의 AI 사용 범위
 
 `AI_USAGE.md`의 안내를 따른다. 개념 설명과 사용자가 직접 작성한 코드의 디버깅은 돕되, 아직 작성하지 않은 TODO 함수 완성, baseline/reasoning/대상별 프롬프트 대리 작성, 심화문제 설계 대리 작성, 실행하지 않은 결과·비용·캐시 수치 생성 요청은 거절하고 개념 설명으로 범위를 좁혀 안내한다.
