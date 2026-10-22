@@ -28,7 +28,13 @@ def build_instructions(documents, variant):
     if variant not in {"baseline", "reasoning"}:
         raise ValueError("variant는 baseline 또는 reasoning입니다.")
     # 이유: Few-shot과 Self-Consistency는 각각 어떤 상황에 쓰는지,
+    ## Few-shot은 AI 모델에게 질문하기 전, 원하는 작업의 예시를 몇 개 보여줘서 답을 잘 찾게 만드는 방식.
+    ## Self-Consistency는 AI 모델이 여러 번 답을 생성하고, 그 중 가장 많이 생성된 답을 선택하는 다수결 방식.
     # 이번에는 왜 Reasoning을 쓰는지와 한계를 2~3문장으로 적으세요.
+    ## Reasoning은 복잡한 계획, 다단계 판단, 모호한 제약 조정처럼 한 번에 여러 조건을 함께 다뤄야 하는 작업에서 어떠한 추론 및 논리 전개를 하는지의 설명을 요구하는 방식.
+    ## 한계로는 그릇된 근거와 논리를 가지고 Reasoning을 하더라도 그럴듯하기 때문에 확인이 어렵다.
+    ## 스스로 생각하고 검증하는 시간이 생겨서 비용이 증가하고 속도가 느려집니다.
+    
     policy = _todo("정책 프롬프트: 역할, 업무 범위, 근거, 비밀정보, 담당자 확인, 답변 형식을 담은 문자열")
     if variant == "reasoning":
         policy += _todo("정책 프롬프트: 답변 전에 근거와 제약을 점검하게 하는 문자열")
